@@ -1,14 +1,18 @@
-import React, {useRef, useEffect, useLayoutEffect, useState} from 'react'
+import React, { useRef, useEffect, useLayoutEffect, useState } from 'react'
 import rough from 'roughjs/bundled/rough.esm'
 
+const useHistory = (initialState) => {
+
+}
+
 export default function Canvas() {
-    const [tool, setTool]         = useState('ellipse')
+    const [tool, setTool]         = useState('triangle')
     const [action, setAction]     = useState(null)
     const [elements, setElements] = useState([])
 
-    const canvasRef = useRef(null)    
+    const canvasRef = useRef(null)
     const roughCanvasRef = useRef(null)
-    const generator = rough.generator()    
+    const generator = rough.generator()
 
     useLayoutEffect(() => {
         const canvas  = canvasRef.current
@@ -52,7 +56,7 @@ export default function Canvas() {
         }
     }
 
-    const createElement = (id, type, coords) => {
+    const createElement = (id, type, coords, lockRatio = false) => {
         const { x1, y1, x2, y2 } = coords
         let element
 
@@ -61,13 +65,18 @@ export default function Canvas() {
                 element = generator.line(x1, y1, x2, y2)
                 break
             case 'rectangle':
-                element = generator.rectangle(x1, y1, x2 - x1, y2 - y1)
+                element = lockRatio
+                    ? generator.rectangle(x1, y1, x2 - x1, x2 - x1)
+                    : generator.rectangle(x1, y1, x2 - x1, y2 - y1) 
                 break
             case 'ellipse':
-                element = generator.ellipse(x1, y1, 10, 10)
+                element = lockRatio 
+                    ? generator.ellipse((x1 + x2) / 2, (y1 + y2) / 2, x2 - x1, x2 - x1)
+                    : generator.ellipse((x1 + x2) / 2, (y1 + y2) / 2, x2 - x1, y2 - y1)
                 break;
             case 'triangle':
-                element = generator.line(x1, y1, x2, y2)
+                //element = generator.linearPath([ [x1, y1], [x2, y2], [x1 - (x2 - x1), y2], [x1, y1] ])
+                element = generator.linearPath([ [x1, y2], [x2, y2], [(x2 - x1) / 2 + x1, (y2 - y1) / 2 + y1], [x1, y2] ])
                 break
             default:
                 element = generator.line(x1, y1, x2, y2)
@@ -84,8 +93,8 @@ export default function Canvas() {
         setElements(newElements)
     }
 
-    //const getDistance = () => 
-
+    const getDistance = (a, b) => Math.sqrt( Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2) ) 
+    
     return (
         <canvas
             ref={canvasRef}
