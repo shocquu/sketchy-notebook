@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap');
+
+.tool-box {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    padding: 1em;
+    gap: 1em;
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+    .tool-box input {
+        display: none;
+    }
+
+    .tool-box h2 {
+        margin: 0.5em 0;
+        text-align: center;
+    }
+
+    .tool {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        will-change: transform;
+    }
+
+        .tool:hover {
+            animation: scribble 1s infinite;
+        }
+
+        .tool > img {
+            width: 40px;
+        }
+
+        .tool > span {
+            margin-left: 10px;
+        }
+
+@keyframes scribble {
+    0% {
+        transform: translate3d(0px, 0px, 0) skew(2deg);
+    }
+
+    20% {
+        transform: translate3d(1px, 0px, 0) skew(1deg);
+    }
+
+    40% {
+        transform: translate3d(-1px, 0px, 0) skew(-3deg);
+    }
+
+    60% {
+        transform: translate3d(0px, 1px, 0) skew(0deg);
+    }
+
+    80% {
+        transform: translate3d(1px, 1px, 0) skew(-2deg);
+    }
+
+    100% {
+        transform: translate3d(0px, 0px, 0) skew(2deg);
+    }
+}

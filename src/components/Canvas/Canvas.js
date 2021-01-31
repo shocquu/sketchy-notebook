@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useLayoutEffect, useState } from 'react'
+import React, { useRef, useEffect, useLayoutEffect, useState, useContext } from 'react'
+import { ToolContext } from '../ToolProvider'
 import rough from 'roughjs/bundled/rough.esm'
 
 const useHistory = (initialState) => {
@@ -6,7 +7,7 @@ const useHistory = (initialState) => {
 }
 
 export default function Canvas() {
-    const [tool, setTool]         = useState('triangle')
+    const [tool, setTool]         = useContext(ToolContext)
     const [action, setAction]     = useState(null)
     const [elements, setElements] = useState([])
 
@@ -75,8 +76,19 @@ export default function Canvas() {
                     : generator.ellipse((x1 + x2) / 2, (y1 + y2) / 2, x2 - x1, y2 - y1)
                 break;
             case 'triangle':
-                //element = generator.linearPath([ [x1, y1], [x2, y2], [x1 - (x2 - x1), y2], [x1, y1] ])
-                element = generator.linearPath([ [x1, y2], [x2, y2], [(x2 - x1) / 2 + x1, (y2 - y1) / 2 + y1], [x1, y2] ])
+                element = lockRatio
+                    ? generator.linearPath([ [x1, y2], [x2, y2], [(x2 - x1) / 2 + x1, (x1 - x2) / 2 + y2], [x1, y2] ])
+                    : generator.linearPath([ [x1, y2], [x2, y2], [(x2 - x1) / 2 + x1, (y2 - y1) / 2 + y1], [x1, y2] ])
+                break
+            case 'arrow':
+                const radians = 0.4
+                const [ diffX, diffY ] = [ x1 - x2, y1 - y2 ]
+                const newX = ( diffX * Math.cos(radians) + diffY * Math.sin(radians) ) / 10 + x2
+                const newY = ( -diffX * Math.sin(radians) + diffY * Math.cos(radians) ) / 10 + y2
+                const newX2 = ( diffX * Math.cos(radians) - diffY * Math.sin(radians) ) / 10 + x2
+                const newY2 = ( diffX * Math.sin(radians) + diffY * Math.cos(radians) ) / 10 + y2
+
+                element = generator.path(`M ${x1},${y1} L ${x2},${y2} L ${newX},${newY} M ${x2},${y2} L ${newX2},${newY2} Z`)
                 break
             default:
                 element = generator.line(x1, y1, x2, y2)
@@ -95,6 +107,8 @@ export default function Canvas() {
 
     const getDistance = (a, b) => Math.sqrt( Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2) ) 
     
+    const toDegrees = (angle) => angle * (180 / Math.PI) 
+
     return (
         <canvas
             ref={canvasRef}

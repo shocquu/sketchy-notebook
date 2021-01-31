@@ -1,12 +1,13 @@
 import Canvas from './components/Canvas/Canvas'
-import ToolBox from './components/ToolBox/ToolBox'
+import ToolBar from './components/ToolBar/ToolBar'
+import ToolContext from './components/ToolProvider'
 import './App.css'
 
 export default function App() {
   return (
-    <>
-      <ToolBox/>
-      <Canvas/> 
-    </>   
+    <ToolContext>
+      <ToolBar/>
+      <Canvas/>
+    </ToolContext>
   )
 }
