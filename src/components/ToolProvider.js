@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const initialState = 'arrow'
+const initialState = 'rectangle'
 
 export const ToolContext = React.createContext()
 
