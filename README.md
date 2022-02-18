@@ -17,20 +17,15 @@
 
 A little project I made while learning React. It was my take on this excellent tutorial. The idea was to have an online notebook in a hand-drawn style. I was going to expand it with more features, but I discontinued the project.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 ### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * [React.js](https://reactjs.org/)
 * [Rough.js](https://roughjs.com/)
+
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Redhwan Nacef @ Youtube](https://www.youtube.com/c/RedhwanNacef)
-* [Rough.js library](https://roughjs.com/)
+* [Redhwan Nacef](https://www.youtube.com/c/RedhwanNacef) @ Youtube
