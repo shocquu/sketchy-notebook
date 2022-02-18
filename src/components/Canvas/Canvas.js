@@ -60,24 +60,23 @@ export default function Canvas() {
             
             if(element) {
                 const { x1, y1, x2, y2 } = element
-                console.log(element.position)
 
                 if(selected && selected.id === element.id) {
                     const width = x2 - x1
                     const height = y2 - y1
                     setSelected({...element, offsetX: clientX - x1, offsetY: clientY - y1, width, height })
                     setElements(prevState => prevState)
-                    setAction('moving')
+                    setAction('moving')                    
                 } else {
                     removeResizeHandler()
 
                     if(element.position !== 'empty' && !selected) {
                         setSelected(element)
                         addResizeHandler(element)
-                    } 
+                        event.target.style.cursor = element ? setCursor(element.position) : 'default'
+                    }
                 }             
             } else {
-                console.log('nada')
                 setSelected(null)
                 removeResizeHandler()
             }
@@ -93,6 +92,11 @@ export default function Canvas() {
 
     const handleMouseMove = (event) => {
         const { clientX, clientY } = event
+
+        if(tool === 'selection' && selected) {
+            const element = getElementAtPosition(clientX, clientY)
+            event.target.style.cursor = element ? setCursor(element.position) : 'default'
+        }
 
         if(action === 'drawing') {
             const index = elements.length - 1
@@ -112,7 +116,7 @@ export default function Canvas() {
         let { x1, y1, x2, y2 } = coords
         let element
         const options = {
-            fill: null
+            fill: 'red'
         }
 
         switch (type) {
@@ -162,9 +166,9 @@ export default function Canvas() {
         return { id, type, x1, y1, x2, y2, element }
     }
 
-    const removeElement = (id) => {
+    const removeElement = (id, length = 1) => {
         const newElements = [...elements]
-        newElements.splice(id, 1)
+        newElements.splice(id, length)
         setElements(newElements)
     }
 
@@ -174,8 +178,11 @@ export default function Canvas() {
         newElements[id] = updatedElement
 
         if(selected && tool === 'selection') {
-            const outlineElement = createElement(elements.length - 1, 'outline', coords)
-            newElements[elements.length - 1] = outlineElement
+            const { x1, y1 } = coords
+            const outlineElement = createElement(elements.length - 2, 'outline', coords)
+            const resizer = createElement(elements.length - 1, 'outline', { x1: x1 - 2, y1: y1 - 2, x2: x1 + 2, y2: y1 + 2 })
+            newElements[elements.length - 2] = outlineElement
+            newElements[elements.length - 1] = resizer
         }
         
         setElements(newElements)        
@@ -257,26 +264,28 @@ export default function Canvas() {
         const { x1, y1, x2, y2 } = element
         const outline = createElement(elements.length, 'outline', { x1, y1, x2, y2 })
         setElements(prevState => [...prevState, outline])
+
+        const resizer = createElement(elements.length + 1, 'outline', { x1: x1 - 4, y1: y1 - 4, x2: x1 - 2, y2: y1 - 2 })
+        setElements(prevState => [...prevState, resizer])
     }
 
     const removeResizeHandler = () => {
         const outline = elements.find(element => element.type === 'outline')
     
         if(outline) {
+            removeElement(outline.id, 2)
             setSelected(null)
-            setAction(null) 
-            removeElement(outline.id)
+            setAction(null)            
         }
     }
 
-    const changeCursor = (type) => {
-        switch (type) {
+    const setCursor = (position) => {
+        switch (position) {
             case 'inside':
-                document.body.style.cursor = 'move'
-                break;
+                return 'move'
         
             default:
-                break;
+                break
         }
     }
 
