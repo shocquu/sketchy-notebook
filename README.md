@@ -29,3 +29,4 @@ A little project I made while learning React. It was my take on this excellent t
 ## Acknowledgments
 
 * [Redhwan Nacef](https://www.youtube.com/c/RedhwanNacef) @ Youtube
+* [Excalidraw](https://excalidraw.com/)
