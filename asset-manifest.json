@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/sketchy-notebook/static/css/main.293d636d.chunk.css",
+    "main.js": "/sketchy-notebook/static/js/main.3523a2cc.chunk.js",
+    "main.js.map": "/sketchy-notebook/static/js/main.3523a2cc.chunk.js.map",
+    "runtime-main.js": "/sketchy-notebook/static/js/runtime-main.5568e1dd.js",
+    "runtime-main.js.map": "/sketchy-notebook/static/js/runtime-main.5568e1dd.js.map",
+    "static/js/2.c6949b32.chunk.js": "/sketchy-notebook/static/js/2.c6949b32.chunk.js",
+    "static/js/2.c6949b32.chunk.js.map": "/sketchy-notebook/static/js/2.c6949b32.chunk.js.map",
+    "static/js/3.80c27f0b.chunk.js": "/sketchy-notebook/static/js/3.80c27f0b.chunk.js",
+    "static/js/3.80c27f0b.chunk.js.map": "/sketchy-notebook/static/js/3.80c27f0b.chunk.js.map",
+    "index.html": "/sketchy-notebook/index.html",
+    "static/css/main.293d636d.chunk.css.map": "/sketchy-notebook/static/css/main.293d636d.chunk.css.map",
+    "static/js/2.c6949b32.chunk.js.LICENSE.txt": "/sketchy-notebook/static/js/2.c6949b32.chunk.js.LICENSE.txt",
+    "static/media/arrow-active.d3871a3f.svg": "/sketchy-notebook/static/media/arrow-active.d3871a3f.svg",
+    "static/media/arrow.b24a6f66.svg": "/sketchy-notebook/static/media/arrow.b24a6f66.svg",
+    "static/media/ellipse-active.957d413c.svg": "/sketchy-notebook/static/media/ellipse-active.957d413c.svg",
+    "static/media/ellipse.3530a60b.svg": "/sketchy-notebook/static/media/ellipse.3530a60b.svg",
+    "static/media/line-active.53b5389c.svg": "/sketchy-notebook/static/media/line-active.53b5389c.svg",
+    "static/media/line.0ee8f270.svg": "/sketchy-notebook/static/media/line.0ee8f270.svg",
+    "static/media/rectangle-active.72c4a5ef.svg": "/sketchy-notebook/static/media/rectangle-active.72c4a5ef.svg",
+    "static/media/rectangle.f5d954ea.svg": "/sketchy-notebook/static/media/rectangle.f5d954ea.svg",
+    "static/media/select-active.f1899dc7.svg": "/sketchy-notebook/static/media/select-active.f1899dc7.svg",
+    "static/media/select.70df1ec0.svg": "/sketchy-notebook/static/media/select.70df1ec0.svg",
+    "static/media/triangle-active.f995cf0d.svg": "/sketchy-notebook/static/media/triangle-active.f995cf0d.svg",
+    "static/media/triangle.ecc9a150.svg": "/sketchy-notebook/static/media/triangle.ecc9a150.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5568e1dd.js",
+    "static/js/2.c6949b32.chunk.js",
+    "static/css/main.293d636d.chunk.css",
+    "static/js/main.3523a2cc.chunk.js"
+  ]
+}
