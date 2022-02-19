@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/shocquu/sketchy-reactjs">
-    <img src="https://raw.githubusercontent.com/shocquu/sketchy-reactjs/954e4ed38a15530622f71501524dac1b2b172b6c/assets/logo.svg?token=AM3664BYRRDTSJXBK5ZEHX3CCAEME" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/shocquu/sketchy-notebook/0a8658cb5337e3a16840c906b37d1721c366dabd/public/logo.svg" alt="Logo" width="80" height="80">
   </a>
   <h1 align="center">Sketchy Notebook</h3>
 </div>
