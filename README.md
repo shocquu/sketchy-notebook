@@ -15,7 +15,7 @@
 
 ![Artboard](https://github.com/shocquu/sketchy-reactjs/blob/main/assets/sketchy.png?raw=true)
 
-A little project I made while learning React. It was my take on this excellent tutorial. The idea was to have an online notebook in a hand-drawn style. I was going to expand it with more features, but I discontinued the project.
+A little project I made while learning React. It was my take on [this](https://www.youtube.com/playlist?list=PLSxgVLtIB0IFmQGuVMSE_wDHPW5rq4Ik7) excellent tutorial. The idea was to have an online notebook in a hand-drawn style. I was going to expand it with more features, but I discontinued the project.
 
 
 
