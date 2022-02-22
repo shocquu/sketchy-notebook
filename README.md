@@ -7,6 +7,7 @@
     <img src="https://raw.githubusercontent.com/shocquu/sketchy-notebook/0a8658cb5337e3a16840c906b37d1721c366dabd/public/logo.svg" alt="Logo" width="80" height="80">
   </a>
   <h1 align="center">Sketchy Notebook</h3>
+  <p align="center"> <a href="https://shocquu.github.io/sketchy-notebook/" target="_blank">DEMO</a></p>
 </div>
 
 
